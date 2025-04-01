@@ -189,7 +189,11 @@ namespace GHelper.Input
             // FN-Lock group
 
             if (AppConfig.Is("fn_lock") && !AppConfig.IsHardwareFnLock())
-                for (Keys i = Keys.F1; i <= Keys.F11; i++) hook.RegisterHotKey(ModifierKeys.None, i);
+                // for (Keys i = Keys.F1; i <= Keys.F11; i++) hook.RegisterHotKey(ModifierKeys.None, i);
+                foreach (Keys i in new[] { Keys.F1, Keys.F7, Keys.F8 }) 
+                {
+                    hook.RegisterHotKey(ModifierKeys.None, i);
+                }
 
             // Arrow-lock group
             if (AppConfig.Is("arrow_lock") && AppConfig.IsDUO())
